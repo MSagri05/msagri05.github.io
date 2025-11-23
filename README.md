@@ -7,7 +7,7 @@ The site highlights the projects I have completed across design, UX, web develop
 ---
 
 ## 🌐 Live Website
-**https://msagri05.github.io/manmeetsagri.github.io/**
+**https://msagri05.github.io/**
 
 ---
 
