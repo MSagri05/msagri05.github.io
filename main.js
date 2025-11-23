@@ -35,29 +35,31 @@ button.addEventListener("click", () => {
 
 
 //
-// Typewriter Effect for My Name (keeps the space visible)
+// Typewriter Effect ONLY on index.html (homepage)
+
 //
-// https://www.w3schools.com/howto/howto_js_typewriter.asp
-const nameEl = document.querySelector("h3");
+const nameEl = document.querySelector(".intro-text h3");
 
-if (
+
+const isHome =
   window.location.pathname === "/" ||
-  window.location.pathname.endsWith("index.html")
-) { //only for index.html
-  if (nameEl) {
-    const fullText = "Manmeet\u00A0Sagri"; // \u00A0 = non-breaking space 
-    nameEl.textContent = ""; // clear first
-    let i = 0;
+  window.location.pathname.endsWith("/index.html") ||
+  window.location.pathname.endsWith("index.html");
 
-    (function type() {
-      if (i < fullText.length) {
-        nameEl.textContent += fullText[i];
-        i++;
-        setTimeout(type, 150);
-      }
-    })();
-  }
+if (isHome && nameEl) {
+  const fullText = "Manmeet\u00A0Sagri";
+  nameEl.textContent = "";
+  let i = 0;
+
+  (function type() {
+    if (i < fullText.length) {
+      nameEl.textContent += fullText[i];
+      i++;
+      setTimeout(type, 150);
+    }
+  })();
 }
+
 
 //
 // Simple slideshow for Glazing Guide project slides
