@@ -380,7 +380,7 @@ main {
 
 /* =============== Project detail pages =============== */
 
-/* Turn off the home flex so detail pages behave like normal content */
+
 main.project-detail {
   display: block;
   justify-content: initial;
@@ -520,18 +520,8 @@ main.project-detail {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
-/* Optional caption support if you ever add <figcaption> */
-.pd-grid figure {
-  margin: 0;
-}
 
-.pd-grid figcaption {
-  font-family: 'Forum', serif;
-  font-size: 0.95rem;
-  color: #555;
-  margin-top: 8px;
-  line-height: 1.45;
-}
+
 
 /* =============== Glazing Guide slides carousel =============== */
 
@@ -718,17 +708,18 @@ main.project-detail {
     flex-direction: column;
     text-align: center;
     gap: 20px;
-    width: 100%;
+    width: min(100%, 460px);
+    margin: 90px auto 80px; /* more space after nav, less big gap at bottom */
   }
 
   .profile-photo {
-    width: 220px;
-    margin: 0 auto;
-    border-radius: 14px;
+    width: 280px;
+    margin: 8px auto 0;
+    border-radius: 50%; /* keep the circle on mobile too */
   }
 
   .intro-text h2.hello {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .intro-text h3 {
@@ -767,10 +758,16 @@ main.project-detail {
     grid-template-columns: 1fr;
     gap: 18px;
     width: 92%;
-    margin: 24px auto 72px;
+    margin: 24px auto 56px;
   }
 
   .project img {
     border-radius: 12px;
+  }
+
+  /* footer a bit tighter on phones */
+  .site-footer {
+    padding: 24px 0 12px;
+    margin-top: 16px;
   }
 }
