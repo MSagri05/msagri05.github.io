@@ -40,7 +40,10 @@ button.addEventListener("click", () => {
 // https://www.w3schools.com/howto/howto_js_typewriter.asp
 const nameEl = document.querySelector("h3");
 
-if (window.location.pathname.includes("index.html")) { //only for index.html
+if (
+  window.location.pathname === "/" ||
+  window.location.pathname.endsWith("index.html")
+) { //only for index.html
   if (nameEl) {
     const fullText = "Manmeet\u00A0Sagri"; // \u00A0 = non-breaking space 
     nameEl.textContent = ""; // clear first
