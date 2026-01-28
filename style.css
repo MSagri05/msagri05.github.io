@@ -771,3 +771,62 @@ main.project-detail {
     margin-top: 16px;
   }
 }
+
+/* =============== click-to-zoom (lightbox) for project images =============== */
+
+/* make it feel clickable */
+.project-detail img {
+  cursor: zoom-in;
+}
+
+/* subtle hover so ppl realize it’s interactive */
+.project-detail img:hover {
+  transform: scale(1.01);
+  transition: transform 0.2s ease;
+}
+
+/* overlay */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: none; /* hidden by default */
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 2000;
+}
+
+/* when open */
+.lightbox.is-open {
+  display: flex;
+}
+
+/* image inside overlay */
+.lightbox img {
+  max-width: min(1100px, 92vw);
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+  cursor: zoom-out;
+}
+
+/* close button */
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 999px;
+  width: 42px;
+  height: 42px;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-close:hover {
+  background: white;
+}
