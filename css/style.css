@@ -1,0 +1,988 @@
+/* =============== Base styles =============== */
+
+body {
+  font-family: 'Forum', serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Sticky header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #f9f9f9e1;
+  border-bottom: 1px solid #ccc;
+}
+
+header h1 {
+  font-family: 'Bodoni Moda', serif;
+  margin: 0;
+}
+
+/* Shared heading styles */
+h2,
+h3 {
+  font-family: 'Bodoni Moda', serif;
+  color: #222;
+}
+
+
+h1 {
+  font-family: 'Bodoni Moda', serif;
+  color: #222;
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* =============== Navigation =============== */
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.2s ease, font-style 0.2s ease, text-decoration 0.2s ease;
+}
+
+nav a:hover {
+  color: #616161;
+  font-style: italic;
+  text-decoration: line-through;
+}
+
+nav a:active {
+  font-style: italic;
+  text-decoration: underline;
+  color: #444;
+}
+
+/* Current page underline (from aria-current) */
+nav a[aria-current="page"] {
+  font-style: italic;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
+/* =============== Footer =============== */
+
+.site-footer {
+  font-family: 'Forum', serif;
+  color: #444;
+  text-align: center;
+}
+
+.site-footer a {
+  color: #000;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  font-style: italic;
+  text-decoration: line-through;
+  color: #616161;
+}
+
+.site-footer a:active {
+  font-style: italic;
+  text-decoration: underline;
+  color: #444;
+}
+
+/* =============== Section title with divider =============== */
+
+.section-title {
+  font-family: 'Bodoni Moda', serif;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 2px;
+  background: #000;
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+/* =============== Home / intro =============== */
+
+.intro-text p.hello {
+  font-family: "Dancing Script", cursive;
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: 0.5px;
+}
+
+.intro-text h2 {
+  font-family: 'Bodoni Moda', serif;
+}
+
+.intro-text p {
+  font-family: 'Forum', serif;
+  color: #444;
+  margin: 0;
+}
+
+/* =============== Primary button =============== */
+
+a.view-projects-btn,
+a.view-resume-btn {
+  display: inline-block;  /* anchors are inline by default, buttons are block */
+  text-decoration: none;  /* anchors have underline by default */
+}
+
+.view-projects-btn {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Forum', serif;
+  border-radius: 6px;
+  transition: background-color 0.25s ease, padding 0.25s ease, color 0.25s ease;
+  position: relative;
+  cursor: pointer;
+  border: none;
+}
+
+.view-projects-btn:hover {
+  font-style: italic;
+  text-decoration: line-through;
+  background-color: #616161;
+  color: #fff;     
+  padding-right: 36px; 
+  
+}
+
+.view-projects-btn::after {
+  content: ' →';
+  opacity: 0;
+  position: absolute;
+  right: 16px;
+  transition: opacity 0.25s ease;
+}
+
+.view-projects-btn:hover::after {
+  opacity: 1;
+}
+
+.view-projects-btn:active {
+  text-decoration: underline;
+  color: #ccc;
+}
+
+/* =============== About page =============== */
+
+.about-photo {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* =============== Card stack styles =============== */
+
+.photo-card {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background: #eee;
+}
+
+.photo-card:nth-child(2) { transform: rotate(-3deg) translateY(6px); }
+.photo-card:nth-child(3) { transform: rotate(2deg) translateY(12px); }
+.photo-card:nth-child(4) { transform: rotate(-1.5deg) translateY(18px); }
+.photo-card:nth-child(5) { transform: rotate(1deg) translateY(24px); }
+.photo-card:nth-child(6) { transform: rotate(-2deg) translateY(30px); }
+
+.photo-card.is-top {
+  cursor: grab;
+  z-index: 10;
+  transform: rotate(0) translateY(0);
+}
+
+.photo-card.is-top:active {
+  cursor: grabbing;
+}
+
+.photo-card.is-dragging {
+  transition: none;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+.photo-card.is-dismissing {
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  opacity: 0;
+}
+
+.card-stack-hint {
+  font-family: 'Forum', serif;
+  font-size: 0.78rem;
+  color: #bbb;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.card-stack-hover-hint {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.card-stack:hover .card-stack-hover-hint {
+  opacity: 1;
+}
+
+.card-stack.is-dragging .card-stack-hover-hint {
+  opacity: 0;
+}
+
+.hint-arrow {
+  font-family: 'Forum', serif;
+  font-size: 0.78rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.about-text .lead {
+  color: #222;
+}
+
+.about-facts {
+  list-style: none;
+  padding: 0;
+  font-size: 0.98rem;
+}
+
+.about-facts li::before {
+  content: "• ";
+  color: #000;
+}
+
+/* Resume button – same style as primary button */
+.view-resume-btn {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Forum', serif;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.25s ease, padding 0.25s ease, color 0.25s ease;
+  position: relative;
+  cursor: pointer;
+  border: none;
+}
+
+.view-resume-btn:hover {
+  background-color: #616161;
+  font-style: italic;
+  text-decoration: line-through;
+  color: #fff;      
+  padding-right: 36px; 
+}
+
+.view-resume-btn::after {
+  content: ' →';
+  opacity: 0;
+  position: absolute;
+  right: 16px;
+  transition: opacity 0.25s ease;
+}
+
+.view-resume-btn:hover::after {
+  opacity: 1;
+}
+
+.view-resume-btn:active {
+  text-decoration: underline;
+  color: #ccc;
+}
+
+/* =============== Projects grid =============== */
+
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project p {
+  color: #444;
+  line-height: 1.55;
+}
+
+.project img {
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* Overlay on hover */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.overlay h3 {
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 700;
+}
+
+.overlay p {
+  font-family: 'Forum', serif;
+  margin: 0;
+  color: #111;
+}
+
+.project:hover img {
+  transform: scale(1.05);
+}
+
+.project:hover .overlay {
+  opacity: 1;
+}
+
+/* =============== Back to Top Button =============== */
+
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 25px 15px;
+  font-size: 16px;
+  font-family: 'Forum', serif;
+  border: none;
+  border-radius: 5px;
+  background: #0d0d0c;
+  color: #fff;
+  cursor: pointer;
+  display: none; 
+  z-index: 1000;
+}
+
+/* =============== Project detail =============== */
+
+.back-link {
+  display: inline-block;
+  background: #0d0d0c;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.back-link:hover {
+  background: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.mini-video-hero {
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mini-video-hero video {
+  object-fit: cover;
+}
+
+.pd-title {
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.pd-meta {
+  font-family: 'Forum', serif;
+  color: #222;
+}
+
+.pd-right p {
+  font-family: 'Forum', serif;
+  color: #333;
+}
+
+/* Process section */
+.pd-process .section-title {
+  font-family: 'Bodoni Moda', serif;
+  position: relative;
+}
+
+.pd-process .section-title::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 2px;
+  background: #000;
+  margin-top: 10px;
+  opacity: 0.85;
+}
+
+.pd-step h4 {
+  font-family: 'Bodoni Moda', serif;
+}
+
+/* Process images */
+.pd-grid img {
+  object-fit: cover;
+  display: block;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* =============== Glazing Guide carousel =============== */
+
+.slide-image {
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.slide-arrow {
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 999px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.slide-arrow:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+/* =============== Utility =============== */
+
+.section-centered {
+  text-align: center;
+}
+
+.section-title-inline {
+  display: inline-block;
+}
+
+.video-frame {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* =============== Lightbox =============== */
+
+.project-detail img {
+  cursor: zoom-in;
+}
+
+.project-detail img:hover {
+  transform: scale(1.01);
+  transition: transform 0.2s ease;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox img {
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  cursor: zoom-out;
+}
+
+.lightbox-close {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 999px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-close:hover {
+  background: white;
+}
+/* =============== Style Guide specific =============== */
+
+/* Base h1 font (style guide shows h1 outside header) */
+h1 {
+  font-family: 'Bodoni Moda', serif;
+  color: #222;
+}
+
+/* Global link base */
+a {
+  color: #000;
+  transition: color 0.2s ease, font-style 0.2s ease;
+}
+
+a:hover {
+  color: #616161;
+  font-style: italic;
+}
+
+a:active {
+  text-decoration: line-through;
+  color: #444;
+}
+
+/* Code blocks */
+pre {
+  background-color: #f3f3f3;
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin: 12px 0 20px;
+}
+
+code {
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: #222;
+}
+
+/* Element divider blocks */
+.element {
+  border-bottom: 1px solid #ddd;
+}
+
+.element:last-child {
+  border-bottom: none;
+}
+
+/* Section heading divider (style guide sections) */
+#interactive_elements > h2,
+#text_elements > h2,
+#combined_elements > h2,
+#branding > h2 {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+#interactive_elements > h2::after,
+#text_elements > h2::after,
+#combined_elements > h2::after,
+#branding > h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 2px;
+  background: #000;
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+/* Generic button class (used in style guide) */
+.button {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Forum', serif;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.25s ease, padding 0.25s ease, color 0.25s ease;
+  position: relative;
+  cursor: pointer;
+  border: none;
+}
+
+.button:hover {
+  background-color: #616161;
+  font-style: italic;
+  padding-right: 36px;
+}
+
+.button::after {
+  content: ' →';
+  opacity: 0;
+  position: absolute;
+  right: 16px;
+  transition: opacity 0.25s ease;
+}
+
+.button:hover::after {
+  opacity: 1;
+}
+
+.button:active {
+  text-decoration: line-through;
+  color: #ccc;
+}
+
+/* Style guide footer */
+.guide-footer {
+  font-family: 'Forum', serif;
+  color: #444;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  padding: 1.5rem 0;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+}
+
+/* Project analysis cards */
+.project-analysis {
+  border-top: 1px solid #ddd;
+  padding-top: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.project-analysis:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.analysis-title {
+  font-family: 'Bodoni Moda', serif;
+  line-height: 1.05;
+}
+
+.analysis-meta {
+  color: #444;
+}
+
+.analysis-right p {
+  color: #333;
+}
+
+.analysis-process h4,
+.analysis-reflection h4 {
+  font-family: 'Bodoni Moda', serif;
+}
+
+.analysis-step h5 {
+  font-family: 'Bodoni Moda', serif;
+}
+
+.analysis-grid img {
+  object-fit: cover;
+  display: block;
+  border: 1px solid #eee;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+/* =============== Projects page =============== */
+
+/* Filter buttons — match site button aesthetic */
+.filter-btn {
+  font-family: 'Forum', serif;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, padding 0.25s ease, color 0.25s ease;
+  position: relative;
+}
+
+.filter-btn:hover {
+  background-color: #616161;
+  font-style: italic;
+  text-decoration: line-through;
+}
+
+.filter-btn.active {
+  background-color: #616161;
+  color: #fff;
+  font-style: italic;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.filter-label {
+  font-family: 'Forum', serif;
+  font-size: 0.85rem;
+  font-weight: normal;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+/* Project card styling */
+.project-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Project info below image inside card */
+.project-info {
+  padding: 14px 16px 18px;
+}
+
+.project-info h2 {
+  font-family: 'Bodoni Moda', serif;
+  color: #222;
+  margin: 0 0 4px;
+}
+
+.project-info p {
+  font-family: 'Forum', serif;
+  color: #555;
+  margin: 0 0 8px;
+}
+
+.project-tag {
+  font-family: 'Forum', serif;
+  font-size: 0.78rem;
+  color: #999;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Overlay — just the CTA now */
+.project-card .overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.project-card .overlay h3,
+.project-card .overlay p {
+  display: none;
+}
+
+.overlay-cta {
+  font-family: 'Forum', serif;
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+/* =============== Project detail — updated styles =============== */
+
+.pd-label {
+  font-family: 'Forum', serif;
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 0 0 10px;
+}
+
+.pd-phase-label {
+  display: block;
+  font-family: 'Forum', serif;
+  font-size: 0.78rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 0 0 6px;
+}
+
+.pd-desc-label {
+  font-family: 'Forum', serif;
+  font-size: 0.78rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 0 0 12px;
+}
+
+.pd-stats {
+  display: flex;
+  gap: 24px;
+  margin: 20px 0 24px;
+  flex-wrap: wrap;
+}
+
+.pd-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-stat-value {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1.5rem;
+  color: #222;
+  line-height: 1;
+}
+
+.pd-stat-label {
+  font-family: 'Forum', serif;
+  font-size: 0.78rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.pd-note {
+  font-family: 'Forum', serif;
+  color: #888;
+  font-style: italic;
+  font-size: 1rem;
+  margin-top: 8px;
+  border-left: 2px solid #ddd;
+  padding-left: 14px;
+}
+
+.pd-list {
+  font-family: 'Forum', serif;
+  color: #444;
+  padding-left: 20px;
+  margin: 12px 0 0;
+  line-height: 1.8;
+}
+
+.pd-list li {
+  margin-bottom: 4px;
+}
+
+.pd-problem {
+  border-top: 1px solid #eee;
+  padding: 28px 0;
+}
+
+.pd-problem:last-child {
+  border-bottom: 1px solid #eee;
+}
+
+.pd-problem-label {
+  display: block;
+  font-family: 'Forum', serif;
+  font-size: 0.78rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 0 0 6px;
+}
+
+.pd-problem-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1.15rem;
+  color: #222;
+  margin: 0 0 10px;
+}
+
+.pd-problem-body {
+  font-family: 'Forum', serif;
+  color: #555;
+  margin: 0;
+  max-width: 66ch;
+}
+
+.pd-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  margin-top: 24px;
+}
+
+.pd-video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+/* =============== Index tagline typewriter =============== */
+
+.intro-text .tagline {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 12px;
+  min-height: 1.4em;
+  border-right: 2px solid #222;
+  display: inline-block;
+  padding-right: 3px;
+  animation: blink-cursor 0.75s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { border-color: #222; }
+  50%       { border-color: transparent; }
+}
+
+.intro-text .hook {
+  font-family: 'Forum', serif;
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.about-status {
+  font-family: 'Forum', serif;
+  font-style: italic;
+  color: #aaa;
+  font-size: 0.98rem;
+  margin-top: 4px;
+}
+
+/* =============== Focus styles =============== */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+/* =============== Slides section =============== */
+
+.slides-intro {
+  margin-top: 1rem;
+  color: #555;
+}
+
+.slide-counter {
+  margin-top: 0.75rem;
+  text-align: center;
+}
